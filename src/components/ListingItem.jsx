@@ -7,7 +7,7 @@ const ListingItem = ({ listing, id, onDelete }) => {
   return (
     <li className="categoryListing">
       <Link
-        to={`category/${listing.type}/${id}`}
+        to={`/category/${listing.type}/${id}`}
         className="categoryListingLink"
       >
         <img
