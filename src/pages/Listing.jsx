@@ -9,7 +9,7 @@ import { getDoc, doc } from "firebase/firestore";
 import { db } from "../firebase.config";
 import Spinner from "../components/Spinner";
 import shareIcon from "../assets/svg/shareIcon.svg";
-SwiperCore.use([Navigation, Pagination, A11y, Scrollbar])
+SwiperCore.use([Navigation, Pagination, A11y, Scrollbar]);
 
 const Listing = () => {
   const [listing, setListing] = useState(null),
