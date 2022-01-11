@@ -44,9 +44,11 @@ const Profile = () => {
         (listing) => listing.id !== listingId
       );
       setListings(updatedListings);
-      toast.success('Successfully deleted listing')
+      toast.success("Successfully deleted listing");
     }
   };
+
+  const onEdit = (listingId) => navigate(`/edit-listing/${listingId}`);
 
   //submit form
   const onSubmit = async () => {
@@ -149,6 +151,7 @@ const Profile = () => {
                   listing={listing.data}
                   id={listing.id}
                   onDelete={() => onDelete(listing.id)}
+                  onEdit={() => onEdit(listing.id)}
                 />
               ))}
             </ul>
