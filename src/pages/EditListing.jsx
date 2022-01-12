@@ -6,12 +6,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
-import {
-  doc,
-  updateDoc,
-  getDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { doc, updateDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate, useParams } from "react-router-dom";
@@ -19,7 +14,8 @@ import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 
 const EditListing = () => {
-  const [geolocationEnabled/* , setGeolocationEnabled */] = useState(false),
+  // eslint-disable-next-line
+  const [geolocationEnabled, setGeolocationEnabled] = useState(false),
     [loading, setLoading] = useState(false),
     [listing, setListing] = useState(false),
     [formData, setFormData] = useState({
@@ -187,6 +183,8 @@ const EditListing = () => {
                 break;
               case "running":
                 console.log("Upload is running");
+                break;
+              default:
                 break;
             }
           },

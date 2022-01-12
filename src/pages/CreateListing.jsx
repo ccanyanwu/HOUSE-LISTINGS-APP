@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 
 const CreateListing = () => {
+  // eslint-disable-next-line
   const [geolocationEnabled, setGeolocationEnabled] = useState(false),
     [loading, setLoading] = useState(false),
     [formData, setFormData] = useState({
@@ -152,6 +153,8 @@ const CreateListing = () => {
               case "running":
                 console.log("Upload is running");
                 break;
+              default:
+                break;
             }
           },
           (error) => {
@@ -167,14 +170,13 @@ const CreateListing = () => {
     };
 
     const imageUrls = await Promise.all(
-      [...images].map((image) => storeImage(image)),
+      [...images].map((image) => storeImage(image))
     ).catch(() => {
       setLoading(false);
       toast.error("Failed to upload Image");
       return;
     });
 
-    
     const formDataCopy = {
       ...formData,
       imageUrls,
@@ -183,18 +185,18 @@ const CreateListing = () => {
     };
 
     //clean up data
-    formDataCopy.location = address
+    formDataCopy.location = address;
     delete formDataCopy.images;
     delete formDataCopy.address;
     location && (formDataCopy.location = location);
-    !formDataCopy.offer && delete formDataCopy.discountedPrice
+    !formDataCopy.offer && delete formDataCopy.discountedPrice;
 
     //save to database
-    const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
+    const docRef = await addDoc(collection(db, "listings"), formDataCopy);
 
     setLoading(false);
-    toast.success('Listing Saved')
-    navigate(`/category/${formDataCopy.type}/${docRef.id}`)
+    toast.success("Listing Saved");
+    navigate(`/category/${formDataCopy.type}/${docRef.id}`);
   };
 
   if (loading) return <Spinner />;
