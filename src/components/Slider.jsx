@@ -34,7 +34,7 @@ const Slider = () => {
   }, []);
 
   if (loading) return <Spinner />;
-  if (listings.length === 0) return <></>
+  if (listings.length === 0) return <></>;
   return (
     listings && (
       <>
@@ -57,12 +57,13 @@ const Slider = () => {
                 <p className="swiperSlidePrice">
                   $
                   {data.discountedPrice
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",") ??
-                    data.regularPrice
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                  {' '} {data.type === 'rent' && '/month'}
+                    ? data.discountedPrice
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    : data.regularPrice
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                  {data.type === "rent" && "/month"}
                 </p>
               </div>
             </SwiperSlide>
