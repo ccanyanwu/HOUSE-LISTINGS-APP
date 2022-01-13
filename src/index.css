@@ -90,6 +90,9 @@ button {
 .explore {
   margin: 1rem;
 }
+@media  (max-height:667px) {
+.explore{min-height: 110vh;}
+}
 @media (min-width: 1024px) {
   .pageContainer,
   .offers,
