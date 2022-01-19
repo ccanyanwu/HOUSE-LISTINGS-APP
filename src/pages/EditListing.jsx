@@ -33,6 +33,7 @@ const EditListing = () => {
       latitude: 0,
       longitude: 0,
     });
+  
   const {
     type,
     name,
@@ -101,6 +102,7 @@ const EditListing = () => {
     if (e.target.value === "true") {
       boolean = true;
     }
+
     if (e.target.value === "false") {
       boolean = false;
     }
@@ -121,6 +123,7 @@ const EditListing = () => {
       }));
     }
   };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -145,9 +148,11 @@ const EditListing = () => {
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_KEY}`
       );
+
       const data = await response.json();
       geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
       geolocation.lng = data.results[0]?.geometry.location.lng ?? 0;
+      
       location =
         data.status === "ZERO-RESULTS"
           ? undefined

@@ -28,6 +28,7 @@ const ForgotPassword = () => {
       </header>
       <main>
         <form onSubmit={onSubmit}>
+          
           <input
             type="email"
             placeholder="Email"
@@ -36,9 +37,11 @@ const ForgotPassword = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+
           <Link className="forgotPasswordLink" to="/sign-in">
             Sign In
           </Link>
+
           <div className="signInBar">
             <div className="signInText">Send Reset Link</div>
             <button className="signInButton">
@@ -49,6 +52,7 @@ const ForgotPassword = () => {
               />
             </button>
           </div>
+
         </form>
       </main>
     </div>
