@@ -31,7 +31,7 @@ const Category = () => {
           listingsRef,
           where("type", "==", params.categoryName),
           orderBy("timestamp", "desc"),
-          limit(10)
+          limit(2)
         );
 
         //execute query
@@ -70,7 +70,7 @@ const Category = () => {
         where("type", "==", params.categoryName),
         orderBy("timestamp", "desc"),
         startAfter(lastFetchedListing),
-        limit(10)
+        limit(2)
       );
 
       //execute query
